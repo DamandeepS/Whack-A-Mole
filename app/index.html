@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Whack A Mole</title>
+  <meta name="description" content="Magic Realm">
+  <meta name="author" content="Damandeep Singh <mail@damandeepsingh.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css?v=1.0">
+  <link rel="stylesheet" href="styles/test.css?v=1.0">
+</head>
+
+<body>
+  <main>
+    <div class="game-c">
+      <div class="game-c__status-container">
+        <h3 class="game-c__highscore">High Score: <span class="game-js__highscore">0</span></h3>
+        <h4 class="game-c__current-score">Current Score: <span class="game-c__current-score">0</span></h4>
+        <h4 class="game-c__timer ">Time Remaining: <span class="game-js__timer">120</span></h4>
+      </div>
+      <div class="game-c__start-overlay">
+        <h2 class="game-c__start-into game-js__start-into">Welcome to Whack a Mole. This game tests your reaction time and hand-eye coordination.</h2>
+        <div class="game-c__start-controls-container">
+          <button class="game-c__start-controls game-js__start-controls" data-difficulty="easy">Easy</button>
+          <button class="game-c__start-controls game-js__start-controls" data-difficulty="medium">Medium</button>
+          <button class="game-c__start-controls game-js__start-controls" data-difficulty="hard">Hard</button>
+        </div>
+      </div>
+      <div class="game-c__controls-container">
+        <button class="game-c__controls game-js__enter-control">Start</button>
+        <button class="game-c__controls game-js__pause-control">Pause</button>
+      </div>
+      <div class="game-js__playground game-c__playground">
+        <!-- draw grid here -->
+      </div>
+      <div class="game-js__end-screen game-c__end-screen">
+        <h3 class="game-c__current-score"></h3>
+      </div>
+    </div>
+  </main>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
