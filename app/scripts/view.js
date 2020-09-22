@@ -86,6 +86,7 @@
       while(playGroundEl.lastChild) {
         playGroundEl.removeChild(playGroundEl.firstChild);
       }
+      gameContainerEl.classList.remove('game-c--paused');
     });
 
     document.addEventListener('tiles-prepared', e => {
