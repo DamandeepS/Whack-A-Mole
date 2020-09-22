@@ -1,4 +1,4 @@
-@import 'game-container';
+
 * {
     padding: 0;
     margin: 0;
@@ -11,3 +11,5 @@ html {
         background-color: rgb(200, 200, 250);
     }
 }
+
+@import 'game-container';

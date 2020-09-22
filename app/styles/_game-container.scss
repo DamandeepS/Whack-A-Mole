@@ -1,4 +1,5 @@
 $accent-color: #617be0;
+$overlay-bg: #ff0000;
 $primary-text-color: #ffffff;
 $secondary-text-color: #c4c4c4;
 $default-tile-bg: #d3d3d3;
@@ -27,13 +28,15 @@ $landscapeBreakPoint: 1023px;
 
 @mixin controls($padding: 10px, $margin: 5px, $font-size: 1.6em, $bg-color: #fff, $color: #777773) {
     display: inline-block;
+    font-family: Raleway, sans-serif;
+    font-weight: 400;
     background: $bg-color;
     border: none;
     margin: $margin;
     padding: $padding;
     font-size: $font-size;
     min-width: 160px;
-    border-radius: 3px;
+    border-radius: 5px;
     color: $color;
     outline: none;
     cursor: pointer;
@@ -45,17 +48,12 @@ $landscapeBreakPoint: 1023px;
     right: 0;
     top: 0;
     bottom: 0;
-    background: red;
+    background: $overlay-bg;
     display: none;
     z-index: 1;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 @keyframes animate-highlighted {
@@ -84,9 +82,12 @@ main {
         }
 
         .game-c__high-score {
-            font-weight: 100;
+            font-weight: 400;
             font-size: 1.5em;
             margin: 5px;
+            span {
+                font-weight: 700;
+            }
 
             @include landscapeMedia($landscapeBreakPoint) {
                 margin: 0;
@@ -161,7 +162,7 @@ main {
         .game-c__game-tile {
             width: 32%;
             padding-bottom: 32%;
-            margin-bottom: 2%;
+            margin-bottom: 1.25%;
             position: relative;
             @include shadow(#777);
             background-color: $default-tile-bg;
@@ -199,16 +200,18 @@ main {
 
         .game-c__current-score {
             font-size: 2.5em;
-            margin-bottom: 1em;
+            margin-bottom: 20px;
         }
 
         .game-c__high-score {
             font-size: 1.5em;
+            margin-bottom: 10px;
         }
 
         .game-c__replay-control {
             @include controls(10px, 10px);
             @include focus-outline;
+            align-self: center;
         }
     }
 

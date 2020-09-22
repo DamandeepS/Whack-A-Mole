@@ -3,8 +3,6 @@
 })();
 
 (() => {
-
-  
   class WhackAMole {
 
     constructor(gameContainer) {
@@ -18,7 +16,6 @@
       this.playGroundEl = this.gameContainerEl.querySelector('.game-js__playground');
       this.restartButtonEl = this.gameContainerEl.querySelector('.game-js__restart-control');
       this.pauseButtonEl = this.gameContainerEl.querySelector('.game-js__pause-control');
-      this.enterButtonEl = this.gameContainerEl.querySelector('.game-js__enter-control');
       this.startOverlayEl = this.gameContainerEl.querySelector('.game-c__start-overlay')
       this.startControlButtonEls = this.gameContainerEl.querySelectorAll('.game-js__start-controls');
       this.endScreenEl = this.gameContainerEl.querySelector('.game-js__end-screen');
@@ -37,10 +34,6 @@
           this.score--;
         }
         this.selectionEnabled = false; // Disabled till next Randomization
-      });
-
-      this.enterButtonEl.addEventListener('click', () => {
-        this.startOverlayEl.classList.add('game-c__start-overlay--active');
       });
 
       Array.prototype.forEach.call(this.startControlButtonEls, button => {
@@ -68,12 +61,9 @@
 
       this.pauseButtonEl.addEventListener('click', this.togglePause);
 
-      this.restartButtonEl.addEventListener('click', this.resetGame);
+      this.restartButtonEl.addEventListener('click', this.restartGame);
 
-      this.endScreenReplayControlEl.addEventListener('click', () => {
-        this.endScreenEl.classList.remove('game-c__end-screen--active');
-        this.resetGame();
-      });
+      this.endScreenReplayControlEl.addEventListener('click', this.restartGame);
 
       window.addEventListener('orientationchange', this._orientationChanged);
       this._orientationChanged();
@@ -109,11 +99,6 @@
     initGrid = () => {
       
       this.resetGame();
-
-
-      this.enterButtonEl.classList.add('game-u--hidden');
-      this.pauseButtonEl.classList.remove('game-u--hidden');
-      this.restartButtonEl.classList.remove('game-u--hidden');
 
       let gridSize = 3;
       switch (this.difficulty) {
@@ -183,9 +168,6 @@
     showEndScreen = () => {
       this.endScreenEl.classList.add('game-c__end-screen--active');
 
-      this.pauseButtonEl.classList.add('game-u--hidden');
-      this.restartButtonEl.classList.add('game-u--hidden');
-      this.enterButtonEl.classList.remove('game-u--hidden');
       this.endScreenScoreEl.innerText = this.score;
       if (this.score > this.highScore) {
         this.highScore = this.score
@@ -201,6 +183,7 @@
       setTimeout(() => {
         window.confirm('Game Over!!!') &&
         this.endScreenEl.classList.remove('game-c__end-screen--active');
+        this.startOverlayEl.classList.add('game-c__start-overlay--active');
       }, 0)
     }
 
@@ -208,15 +191,11 @@
       this.score = 0;
       this.tiles = [];
       this.gamePaused = false;
-      this.totalTime = 120;
+      this.totalTime = 12;
       this.selectionEnabled = true;
       this.selectionPrevState = true;
       this.currentScoreEl.textContent = 0;
       this.timerEl.textContent = this.totalTime;
-
-      this.pauseButtonEl.classList.add('game-u--hidden');
-      this.restartButtonEl.classList.add('game-u--hidden');
-      this.enterButtonEl.classList.remove('game-u--hidden');
 
       this.pauseButtonEl.textContent = 'Pause';
       while(this.playGroundEl.lastChild) {
@@ -225,6 +204,12 @@
 
       window.clearInterval(this.interval);
       this.selectionEnabled = false;
+    }
+
+    restartGame = () => {
+      this.resetGame();
+      this.endScreenEl.classList.remove('game-c__end-screen--active') &&
+      this.startOverlayEl.classList.add('game-c__start-overlay--active');
     }
 
   }
