@@ -181,9 +181,10 @@
       this.resetGame();
 
       setTimeout(() => {
-        window.confirm('Game Over!!!') &&
-        this.endScreenEl.classList.remove('game-c__end-screen--active');
-        this.startOverlayEl.classList.add('game-c__start-overlay--active');
+        if (window.confirm('Game Over!!!')) {
+          this.endScreenEl.classList.remove('game-c__end-screen--active');
+          this.startOverlayEl.classList.add('game-c__start-overlay--active');
+        }
       }, 0)
     }
 
@@ -191,7 +192,7 @@
       this.score = 0;
       this.tiles = [];
       this.gamePaused = false;
-      this.totalTime = 12;
+      this.totalTime = 120;
       this.selectionEnabled = true;
       this.selectionPrevState = true;
       this.currentScoreEl.textContent = 0;
@@ -208,7 +209,7 @@
 
     restartGame = () => {
       this.resetGame();
-      this.endScreenEl.classList.remove('game-c__end-screen--active') &&
+      this.endScreenEl.classList.remove('game-c__end-screen--active');
       this.startOverlayEl.classList.add('game-c__start-overlay--active');
     }
 
