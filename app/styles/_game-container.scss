@@ -97,6 +97,10 @@ $landscapeBreakPoint: 1023px;
         
         .game-c__timer, .game-c__current-score {
             font-weight: 400;
+            
+            span {
+                font-weight: 700;
+            }
         }
     }
 
