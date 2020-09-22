@@ -2,52 +2,52 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>Whack A Mole</title>
-  <meta name="description" content="Magic Realm">
-  <meta name="author" content="Damandeep Singh <mail@damandeepsingh.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400&display=swap" rel="stylesheet">
+    <title>Whack A Mole</title>
+    <meta name="description" content="Magic Realm">
+    <meta name="author" content="Damandeep Singh <mail@damandeepsingh.com>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <main>
-    <div class="game-c">
-      <div class="game-c__status-container">
-        <h3 class="game-c__high-score">High Score: <span class="game-js__high-score">0</span></h3>
-        <h4 class="game-c__current-score">Current Score: <span class="game-js__current-score">0</span></h4>
-        <h4 class="game-c__timer ">Time Remaining: <span class="game-js__timer">120</span></h4>
-      </div>
-      <div class="game-c__start-overlay game-c__start-overlay--active">
-        <h3 class="game-c__high-score">Current Top Score: <span class="game-js__high-score">0</span></h3>
-        <h2 class="game-c__start-intro game-js__start-intro">Welcome to Whack a Mole.</h2>
-        <p class="game-c__start-intro-subtext">
-          This game tests your reaction time and hand-eye coordination.
-        </p>
-        <div class="game-c__start-controls-container">
-          <button class="game-c__start-controls game-js__start-controls" data-difficulty="easy">Easy</button>
-          <button class="game-c__start-controls game-js__start-controls" data-difficulty="medium">Medium</button>
-          <button class="game-c__start-controls game-js__start-controls" data-difficulty="hard">Hard</button>
+    <main>
+        <div class="game-c">
+            <div class="game-c__status-container">
+                <h3 class="game-c__high-score">High Score: <span class="game-js__high-score">0</span></h3>
+                <h4 class="game-c__current-score">Current Score: <span class="game-js__current-score">0</span></h4>
+                <h4 class="game-c__timer ">Time Remaining: <span class="game-js__timer">120</span></h4>
+            </div>
+            <div class="game-c__start-overlay game-c__start-overlay--active">
+                <h3 class="game-c__high-score">Current Top Score: <span class="game-js__high-score">0</span></h3>
+                <h2 class="game-c__start-intro game-js__start-intro">Welcome to Whack a Mole.</h2>
+                <p class="game-c__start-intro-subtext">
+                    This game tests your reaction time and hand-eye coordination.
+                </p>
+                <div class="game-c__start-controls-container">
+                    <button class="game-c__start-controls game-js__start-controls" data-difficulty="easy">Easy</button>
+                    <button class="game-c__start-controls game-js__start-controls" data-difficulty="medium">Medium</button>
+                    <button class="game-c__start-controls game-js__start-controls" data-difficulty="hard">Hard</button>
+                </div>
+            </div>
+            <div class="game-c__controls-container">
+                <button class="game-c__controls game-js__pause-control">Pause</button>
+                <button class="game-c__controls game-js__restart-control">Restart</button>
+            </div>
+            <div class="game-js__playground game-c__playground">
+                <!-- draw grid here -->
+            </div>
+            <div class="game-js__end-screen game-c__end-screen">
+                <h3 class="game-c__current-score">Your Score: <span class="game-js__current-score"></span></h3>
+                <h3 class="game-c__high-score">High Score: <span class="game-js__high-score"></span></h3>
+                <button class="game-c__replay-control game-js__replay-control">Replay</button>
+            </div>
         </div>
-      </div>
-      <div class="game-c__controls-container">
-        <button class="game-c__controls game-js__pause-control">Pause</button>
-        <button class="game-c__controls game-js__restart-control">Restart</button>
-      </div>
-      <div class="game-js__playground game-c__playground">
-        <!-- draw grid here -->
-      </div>
-      <div class="game-js__end-screen game-c__end-screen">
-        <h3 class="game-c__current-score">Your Score: <span class="game-js__current-score"></span></h3>
-        <h3 class="game-c__high-score">High Score: <span class="game-js__high-score"></span></h3>
-        <button class="game-c__replay-control game-js__replay-control">Replay</button>
-      </div>
-    </div>
-  </main>
-  <script src="scripts/customEvents.polyfill.js"></script>
-  <script src="scripts/WhackAMole.js"></script>
-  <script src="scripts/view.js"></script>
+    </main>
+    <script src="scripts/customEvents.polyfill.js"></script>
+    <script src="scripts/whackAMole.js"></script>
+    <script src="scripts/view.js"></script>
 </body>
 </html>
