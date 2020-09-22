@@ -1,9 +1,8 @@
 $accent-color: #617be0;
-$overlay-bg: #ff0000;
 $primary-text-color: #ffffff;
-$secondary-text-color: #c4c4c4;
+$secondary-text-color:#dedede;
 $default-tile-bg: #d3d3d3;
-$highlighted-tile-bg: green;
+$highlighted-tile-bg: #008000;
 
 $landscapeBreakPoint: 1023px;
 
@@ -13,7 +12,7 @@ $landscapeBreakPoint: 1023px;
 
 @mixin focus-outline {
     &:focus {
-        outline: whitesmoke dotted 1px;
+        outline: #f5f5f5 dotted 1px;
     }
 }
 
@@ -48,7 +47,7 @@ $landscapeBreakPoint: 1023px;
     right: 0;
     top: 0;
     bottom: 0;
-    background: $overlay-bg;
+    background: linear-gradient(#FF512F, #DD2476);
     display: none;
     z-index: 1;
     flex-direction: column;
@@ -125,6 +124,15 @@ $landscapeBreakPoint: 1023px;
 
         &.game-c__start-overlay--active {
             display: flex;
+        }
+
+        .game-c__high-score {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 100;
+            font-size: 2em;
         }
 
         .game-c__start-intro {
