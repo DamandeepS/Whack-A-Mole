@@ -1,10 +1,221 @@
-:root {
-    --my-transform: translate(-50%, -50%);
+$accent-color: #617be0;
+$primary-text-color: #ffffff;
+$secondary-text-color: #c4c4c4;
+$default-tile-bg: #d3d3d3;
+$highlighted-tile-bg: green;
+
+$landscapeBreakPoint: 1023px;
+
+@mixin shadow($color) {
+    box-shadow: 0 0 8px -6px $color, 0 0 8px -9px $color, 0 0 8px -8px $color, 0 0 8px -7px $color, 0 0 8px -4px $color;
 }
 
-.game-container {
-    transform: var(--my-transform);
+@mixin focus-outline {
+    &:focus {
+        outline: whitesmoke dotted 1px;
+    }
+}
+
+
+@mixin landscapeMedia($val) {
+    .game-c--landscape & {
+        @media screen and (max-width: $val) {
+            @content;
+        }
+    }
+}
+
+@mixin controls($padding: 10px, $margin: 5px, $font-size: 1.6em, $bg-color: #fff, $color: #777773) {
+    display: inline-block;
+    background: $bg-color;
+    border: none;
+    margin: $margin;
+    padding: $padding;
+    font-size: $font-size;
+    min-width: 160px;
+    border-radius: 3px;
+    color: $color;
+    outline: none;
+    cursor: pointer;
+}
+
+@mixin overlay {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: red;
+    display: none;
+    z-index: 1;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@keyframes animate-highlighted {
+    from {
+        background-color: $default-tile-bg;
+    }
+    to {
+        background-color: $highlighted-tile-bg;
+    }
+}
+
+.game-c {
+    font-family: Raleway, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    .game-u--hidden {
+        display: none !important;
+    }
+
+    &__status-container {
+        text-align: center;
+        padding: 20px 0;
+
+        @include landscapeMedia($landscapeBreakPoint) {
+            padding: 5px 0;
+        }
+
+        .game-c__high-score {
+            font-weight: 100;
+            font-size: 1.5em;
+            margin: 5px;
+
+            @include landscapeMedia($landscapeBreakPoint) {
+                margin: 0;
+            }
+        }
+        
+        
+        .game-c__timer, .game-c__current-score {
+            font-weight: 400;
+        }
+    }
+
+    &__controls-container {
+        padding: 20px 0;
+        text-align: center;
+
+        @include landscapeMedia($landscapeBreakPoint) {
+            padding: 0;
+        }
+
+        .game-c__controls {
+            @include controls(10px, 10px, 1.2em);
+            @include shadow(#333)
+        }
+    }
+
+    &__start-overlay {
+        
+        @include overlay;
+        padding: 20px;
+
+        &.game-c__start-overlay--active {
+            display: flex;
+        }
+
+        .game-c__start-intro {
+            font-size: 2.5em;
+            padding-bottom: 20px;
+            margin : 10px 0;
+        }
+
+        p.game-c__start-intro-subtext {
+            font-size: 1.3em;
+            padding: 20px 0;
+            color: $secondary-text-color;
+        }
+        
+        .game-c__start-controls-container {
+            text-align: center;
+            padding: 20px 10px 0 10px;
+        }
+
+        .game-c__start-controls {
+            @include controls(16px, 10px, 1.6em, $accent-color, $primary-text-color);
+            @include shadow(#333);
+            @include focus-outline;
+        }
+    }
+
+    &__playground {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 3px;
+        max-width: calc(100vh - 250px);
+        position: relative;
+        @include landscapeMedia($landscapeBreakPoint) {
+            max-width: calc(100vh - 150px);
+        }
+
+        .game-c__game-tile {
+            width: 32%;
+            padding-bottom: 32%;
+            margin-bottom: 2%;
+            position: relative;
+            @include shadow(#777);
+            background-color: $default-tile-bg;
+            border-radius: 4px;
+            @include focus-outline;
+
+            &--highlighted {
+                animation: animate-highlighted 0.1s ease-in 0s both;
+                @include shadow(#333)
+            }
+
+            &:active {
+                box-shadow: none;
+            }
+
+        }
+
+        &.game-c__playground-4 .game-c__game-tile{
+            width: 24%;
+            padding-bottom: 24%;
+        }
+
+        &.game-c__playground-6 .game-c__game-tile{
+            width: 16%;
+            padding-bottom: 16%;
+        }
+    }
+
+    &__end-screen {
+        @include overlay;
+
+        &.game-c__end-screen--active {
+            display: flex;
+        }
+
+        .game-c__current-score {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+        }
+
+        .game-c__high-score {
+            font-size: 1.5em;
+        }
+
+        .game-c__replay-control {
+            @include controls(10px, 10px);
+            @include focus-outline;
+        }
+    }
+
+    &.game-c--paused {
+        .game-c__playground {
+            opacity: 0.3;
+        }
+    }
+
 }
