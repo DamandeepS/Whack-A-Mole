@@ -28,3 +28,5 @@ Output directory `dist`
 
 
 This project uses Bablify to enable ES6(without imports), transpiles into ES5 for old browsers.
+
+Additionally, Uses Service Workers for enabling it as a PWA and enabling Offline Availability
