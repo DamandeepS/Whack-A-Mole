@@ -27,6 +27,8 @@
 
     const restartGame = () => {
         newGame.resetGame();
+        highScoreEl.textContent = newGame.highScore;
+        startOverlayHighScoreEl.textContent = newGame.highScore;
         endScreenEl.classList.remove('game-c__end-screen--active');
         startOverlayEl.classList.add('game-c__start-overlay--active');
     };
@@ -39,7 +41,7 @@
     Array.prototype.forEach.call(startControlButtonEls, button => {
         button.addEventListener('click', () => {
             const difficulty = button.dataset['difficulty'] || 'easy';
-            newGame.handleStartControl(difficulty);
+            newGame.startGame(difficulty);
         });
     });
 
@@ -63,9 +65,10 @@
         endScreenEl.classList.add('game-c__end-screen--active');
 
         endScreenScoreEl.innerText = newGame.score;
-        highScoreEl.textContent = newGame.highScore;
         currentScoreEl.textContent = newGame.score;
         endScreenHighScoreEl.textContent = newGame.highScore;
+        highScoreEl.textContent = newGame.highScore;
+        startOverlayHighScoreEl.textContent = newGame.highScore;
 
 
         newGame.resetGame();

@@ -4,7 +4,10 @@
   "description": "Whack a Mole",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava",
+    "build:prod": "gulp prod",
+    "build": "gulp",
+    "develop": "gulp develop"
   },
   "author": "Damandeep Singh <mail@damandeepsingh.com>",
   "license": "WTFPL",
@@ -15,15 +18,20 @@
     "@babel/plugin-syntax-class-properties": "^7.10.4",
     "@babel/plugin-syntax-jsx": "^7.10.4",
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
     "autoprefixer": "^9.8.6",
+    "ava": "^3.12.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-yui-compressor-fix-reserved-keywords": "0.0.1",
+    "browser-env": "^3.3.0",
     "browser-sync": "^2.26.12",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-minify": "^3.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
     "through2": "^4.0.2"

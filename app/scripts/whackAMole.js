@@ -7,19 +7,18 @@ class WhackAMole {
         // Events
         document.addEventListener('game__tile-clicked', e => {
             const selectedTile = e.detail;
-            if (this.selectionEnabled && this.randomTile === selectedTile) {
+            if (this.selectionEnabled && this._randomTile === selectedTile) {
                 this.score++;
             } else if (this.selectionEnabled) {
                 this.score--;
             }
-
             document.dispatchEvent(new CustomEvent('game-update-telemetry'));
             this.selectionEnabled = false; // Disabled till next Randomization
         });
 
     }
 
-    handleStartControl = (difficulty) => {
+    startGame = (difficulty) => {
         this._initGrid(difficulty);
         // initialize the game randomization till 120 seconnds
         this.interval = window.setInterval(() => {
@@ -27,7 +26,7 @@ class WhackAMole {
                 this.selectionEnabled = false;
                 return;
             }
-            if (this.totalTime-- > 0) {
+            if (this.totalTime > 0) {
                 this._randomizeHighlightedTile();
                 document.dispatchEvent(new CustomEvent('game-update-telemetry'));
                 this.selectionEnabled = true;
@@ -36,6 +35,7 @@ class WhackAMole {
                 this.selectionEnabled = false;
                 this.gameEnded();
             }
+            this.totalTime--;
         }, 1000);
     };
 
@@ -70,11 +70,11 @@ class WhackAMole {
 
     _randomizeHighlightedTile = () => {
         const randomIndex = Math.max(0, Math.min(this.tiles.length - 1, Math.round(Math.random() * this.tiles.length - 1)));
-        this.randomTile = this.tiles[randomIndex];
+        this._randomTile = this.tiles[randomIndex];
         this.tiles.forEach(tile => {
             tile.classList.remove('game-c__game-tile--highlighted');
             tile.classList.remove('game-c__game-tile--incorrect');
-            if (this.randomTile === tile) {
+            if (this._randomTile === tile) {
                 setTimeout(() => tile.classList.add('game-c__game-tile--highlighted'), 50);
             }
         });
@@ -136,3 +136,5 @@ class WhackAMole {
     };
 
 }
+
+window.WhackAMole = WhackAMole;
