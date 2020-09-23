@@ -127,7 +127,7 @@ class WhackAMole {
         this.score = 0;
         this.tiles = [];
         this.gamePaused = false;
-        this.totalTime = 20;
+        this.totalTime = 120;
         this.selectionEnabled = true;
         this.selectionPrevState = true;
         window.clearInterval(this.interval);
