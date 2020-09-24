@@ -5,7 +5,7 @@ A simple Quick Reaction Game
 
 ### Uses NPM and GULP
 
-Make sure you have NodeJS, NPM and then GULP CLI installed.
+Make sure you have latest stable NodeJS and NPM installed.
 
 
 ### Getting Started
