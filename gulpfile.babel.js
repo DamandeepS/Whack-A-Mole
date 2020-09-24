@@ -1,13 +1,16 @@
 'use strict';
 import {src, dest, watch, series, parallel} from 'gulp';
 import gulpClean from 'gulp-clean';
-import minify from "gulp-minify";
-import cleanCSS from "gulp-clean-css";
 
 // Sass
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
+import cleanCSS from "gulp-clean-css";
+
+//JS
+const babel = require('gulp-babel');
+import minify from "gulp-minify";
 
 // Node Utitlies
 import path from 'path';
@@ -16,7 +19,6 @@ import path from 'path';
 import {create as browserSyncCreate} from 'browser-sync';
 const browserSync = browserSyncCreate('dev-hoist');
 
-const babel = require('gulp-babel');
 
 const basePath = path.join(__dirname, 'app');
 const paths = {
